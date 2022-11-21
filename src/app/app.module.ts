@@ -1,3 +1,4 @@
+import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,16 +8,11 @@ import { AuthComponent } from './modules/auth/auth.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AuthComponent,
-    DashboardComponent
+  declarations: [AppComponent, AuthComponent, DashboardComponent],
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [
+    { provide: PathLocationStrategy, useClass: HashLocationStrategy },
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
