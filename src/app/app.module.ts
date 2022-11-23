@@ -7,12 +7,20 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './modules/auth/auth.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
+import { SharedModule } from './shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [AppComponent, AuthComponent, DashboardComponent],
-  imports: [BrowserModule, AppRoutingModule],
-  providers: [
-    { provide: PathLocationStrategy, useClass: HashLocationStrategy },
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
