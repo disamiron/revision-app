@@ -8,6 +8,4 @@ import { IShop } from '../../interfaces';
 })
 export class ShopCardComponent {
   @Input() public shop: IShop | null = null;
-
-  public isAdmin: boolean = true;
 }
