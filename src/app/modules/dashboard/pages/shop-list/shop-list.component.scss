@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.shop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

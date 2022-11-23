@@ -12,6 +12,15 @@ const routes: Routes = [
   {
     path: urlValues.dashboard,
     component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./modules/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+    ],
   },
   { path: '**', redirectTo: urlValues.auth, pathMatch: 'full' },
 ];
