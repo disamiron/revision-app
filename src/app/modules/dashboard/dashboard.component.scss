@@ -1,13 +1,17 @@
-:host {
+.dashboard {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 95vh;
-}
-.content {
-  height: 85vh;
-  overflow-y: auto;
-}
-app-footer-menu {
-  height: 10vh;
+  align-items: center;
+  &__content {
+    position: absolute;
+    top: 0;
+    bottom: 50px;
+  }
+  app-footer-menu {
+    position: absolute;
+    bottom: 0;
+    height: 72px;
+  }
 }

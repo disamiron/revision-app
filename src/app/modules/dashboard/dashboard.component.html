@@ -1,6 +1,8 @@
-<div class="content">
-  <router-outlet></router-outlet>
+<div class="dashboard">
+  <div class="dashboard__content">
+    <router-outlet></router-outlet>
+  </div>
+  <app-footer-menu
+    *ngIf="router.url.includes(urlValues.revision)"
+  ></app-footer-menu>
 </div>
-<app-footer-menu
-  *ngIf="router.url.includes(urlValues.revision)"
-></app-footer-menu>
