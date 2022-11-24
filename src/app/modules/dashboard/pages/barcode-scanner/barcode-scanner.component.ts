@@ -33,7 +33,6 @@ export class BarcodeScannerComponent implements AfterViewInit {
     this.barcodeScanner.stop();
     this.started = false;
   }
-
   public barcodeScanStarted() {
     this.started = true;
   }

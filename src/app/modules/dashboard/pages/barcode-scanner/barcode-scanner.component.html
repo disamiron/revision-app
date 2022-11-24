@@ -5,3 +5,7 @@
   (started)="barcodeScanStarted()"
 ></barcode-scanner-livestream>
 <h2 *ngIf="barcodeValue">{{ barcodeValue }}</h2>
+<button mat-raised-button color="primary" class="manual-key">
+  Ручной ввод
+  <mat-icon>keyboard</mat-icon>
+</button>
