@@ -1,0 +1,11 @@
+<mat-card>
+  <button mat-mini-fab color="white">
+    <a [routerLink]="'/' + urlValues.dashboard"> <mat-icon>home</mat-icon></a>
+  </button>
+  <button mat-fab color="primary">
+    <mat-icon> speaker_phone</mat-icon>
+  </button>
+  <button mat-mini-fab color="white" (click)="showMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-card>

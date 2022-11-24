@@ -3,15 +3,24 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopCardComponent } from './components/shop-card/shop-card.component';
+import { MenuComponent } from './modals/menu/menu.component';
+import { BarcodeScannerLivestreamModule } from 'ngx-barcode-scanner';
 
 @NgModule({
-  declarations: [ShopCardComponent],
-  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  declarations: [ShopCardComponent, MenuComponent],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BarcodeScannerLivestreamModule,
+  ],
   exports: [
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     ShopCardComponent,
+    BarcodeScannerLivestreamModule,
   ],
 })
 export class SharedModule {}

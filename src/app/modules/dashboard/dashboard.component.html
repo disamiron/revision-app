@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div>
+  <router-outlet></router-outlet>
+</div>
+<app-footer-menu
+  *ngIf="router.url.includes(urlValues.revision)"
+></app-footer-menu>

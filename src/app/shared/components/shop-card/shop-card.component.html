@@ -1,4 +1,9 @@
-<mat-card *ngIf="shop" [class.pointer]="shop.isThereRevision">
+<mat-card
+  *ngIf="shop"
+  [class.pointer]="shop.isThereRevision || isModerator"
+  [class.active]="shop.isThereRevision"
+  (click)="shop.isThereRevision ? navigateToRevision() : showMenu()"
+>
   <mat-card-header>
     <mat-card-title
       >{{ shop.name }}

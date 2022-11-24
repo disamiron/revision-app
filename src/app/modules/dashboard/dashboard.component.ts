@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { urlValues } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
+  public readonly urlValues = urlValues;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor(public router: Router) {}
 }

@@ -1,0 +1,7 @@
+<h1>Отсканируйте товар</h1>
+<barcode-scanner-livestream
+  type="ean"
+  (valueChanges)="onValueChanges($event)"
+  (started)="barcodeScanStarted()"
+></barcode-scanner-livestream>
+<h2 *ngIf="barcodeValue">{{ barcodeValue }}</h2>

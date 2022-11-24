@@ -1,4 +1,3 @@
-import { HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,9 +9,15 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterMenuComponent } from './shared/components/footer-menu/footer-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, DashboardComponent],
+  declarations: [
+    AppComponent,
+    AuthComponent,
+    DashboardComponent,
+    FooterMenuComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scanner {
+  min-width: 300px;
+  max-width: 600px;
+  max-height: 400px;
+}

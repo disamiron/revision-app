@@ -3,3 +3,13 @@ body {
   justify-content: center;
   font-family: "Roboto", sans-serif;
 }
+
+mat-dialog-container {
+  border-radius: 20px !important;
+  padding: 0 !important;
+}
+
+.mat-button-wrapper {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
