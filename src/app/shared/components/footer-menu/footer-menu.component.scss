@@ -5,7 +5,13 @@
 mat-card {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   min-width: 300px;
   max-width: 400px;
+  height: 40px;
+  background: rgb(190, 190, 190);
+}
+.big {
+  width: 80px;
+  height: 80px;
 }

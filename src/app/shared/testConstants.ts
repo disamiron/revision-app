@@ -30,4 +30,25 @@ export const testShopList = [
     revisionId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
     isThereRevision: false,
   },
+  {
+    shopId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    name: 'Fix price MEGAPOLIS',
+    address: 'Коряжма, ТЦ MEGAPOLIS',
+    revisionId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    isThereRevision: false,
+  },
+  {
+    shopId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    name: 'Fix price MEGAPOLIS',
+    address: 'Коряжма, ТЦ MEGAPOLIS',
+    revisionId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    isThereRevision: false,
+  },
+  {
+    shopId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    name: 'Fix price MEGAPOLIS',
+    address: 'Коряжма, ТЦ MEGAPOLIS',
+    revisionId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+    isThereRevision: false,
+  },
 ];

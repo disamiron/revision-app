@@ -3,8 +3,10 @@
   flex-direction: column;
   align-items: center;
 }
-.scanner {
+::ng-deep .scanner {
   min-width: 300px;
   max-width: 600px;
-  max-height: 320px;
+  video {
+    max-height: 320px !important;
+  }
 }
