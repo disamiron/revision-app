@@ -1,5 +1,7 @@
 export interface IShop {
-  id: number;
+  shopId: string;
   name: string;
   address: string;
+  revisionId: string;
+  isThereRevision: boolean;
 }
