@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
 }
-mat-card {
+.footer-menu {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  min-width: 300px;
+  min-width: 290px;
   max-width: 400px;
+  width: 100%;
   height: 40px;
-  background: rgb(190, 190, 190);
 }
 .big {
   width: 80px;

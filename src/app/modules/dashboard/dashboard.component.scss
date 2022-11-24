@@ -2,16 +2,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 95vh;
+  height: 90vh;
   align-items: center;
   &__content {
-    position: absolute;
-    top: 0;
-    bottom: 50px;
-  }
-  app-footer-menu {
-    position: absolute;
-    bottom: 0;
-    height: 72px;
+    height: 100%;
+    overflow-y: auto;
   }
 }
