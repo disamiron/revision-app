@@ -3,17 +3,14 @@
   background-color: #791c1cf2 !important;
 }
 .modal {
-  position: relative;
   box-sizing: border-box;
-  min-width: 290px;
   max-width: 600px;
-  width: 100%;
   min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 10px;
+  padding: 20px;
   &__buttons {
     display: flex;
     flex-direction: column;
@@ -21,9 +18,10 @@
     gap: 20px;
     margin: 30px 0 20px;
     box-sizing: border-box;
+    min-width: 90%;
     .button {
       height: 60px;
-      width: 95%;
+      width: 100%;
       max-width: 400px;
       border-radius: 10px;
       ::ng-deep .mat-button-wrapper {
