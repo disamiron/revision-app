@@ -10,21 +10,30 @@ import { MenuComponent } from '../../modals/menu/menu.component';
   styleUrls: ['./footer-menu.component.scss'],
 })
 export class FooterMenuComponent {
-  @Input() productPage: boolean = false;
+  @Input() revisionId: string | null = null;
+  @Input() productId: string | null = null;
+  @Input() searchPage: boolean = false;
 
   public readonly urlValues = urlValues;
 
   constructor(private _dialog: MatDialog, private _router: Router) {}
 
+  public goHome() {
+    this._router.navigateByUrl(urlValues.dashboard);
+  }
+
+  public toRevision() {
+    this._router.navigateByUrl(
+      urlValues.dashboard + '/' + urlValues.revision + '/' + this.revisionId
+    );
+  }
+
   public showMenu() {
     this._dialog.open(MenuComponent, {
       data: {
         isThereRevision: true,
+        revisionId: this.revisionId,
       },
     });
-  }
-
-  public locationBack() {
-    this._router.navigate(this._router.url.split('/', 4));
   }
 }

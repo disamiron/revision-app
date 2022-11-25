@@ -1,10 +1,20 @@
 :host {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  min-height: 560px;
+  height: 88vh;
   align-items: center;
 }
-.shop-list {
+.content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  height: 100%;
+  overflow-y: auto;
+  .shop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 }

@@ -9,14 +9,14 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { FooterMenuComponent } from './shared/components/footer-menu/footer-menu.component';
+import { MenuComponent } from './shared/modals/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     DashboardComponent,
-    FooterMenuComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

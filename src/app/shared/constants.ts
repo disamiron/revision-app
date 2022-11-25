@@ -4,6 +4,7 @@ export const urlValues = {
 
   revision: 'revision',
   product: 'product',
+  search: 'search',
 };
 
 export const appName = 'Revision App';

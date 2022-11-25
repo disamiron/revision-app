@@ -1,39 +1,42 @@
-<h1>
-  {{
-    isManuallLogic
-      ? "Введите штрих код или локальный код"
-      : "Отсканируйте товар"
-  }}
-</h1>
-<barcode-scanner-livestream
-  type="ean"
-  (valueChanges)="onValueChanges($event)"
-  (started)="barcodeScanStarted()"
-></barcode-scanner-livestream>
-<form [formGroup]="manuallForm" *ngIf="isManuallLogic">
-  <mat-form-field appearance="fill" [color]="'white'">
-    <mat-label>Штрих-код или локальный код</mat-label>
-    <input type="number" formControlName="barcode" matInput />
-  </mat-form-field>
+<div class="content">
+  <h1>
+    {{
+      isManuallLogic
+        ? "Введите штрих код или локальный код"
+        : "Отсканируйте товар"
+    }}
+  </h1>
+  <barcode-scanner-livestream
+    type="ean"
+    (valueChanges)="onValueChanges($event)"
+    (started)="barcodeScanStarted()"
+  ></barcode-scanner-livestream>
+  <form [formGroup]="manuallForm" *ngIf="isManuallLogic">
+    <mat-form-field appearance="fill" [color]="'white'">
+      <mat-label>Штрих-код или локальный код</mat-label>
+      <input type="number" formControlName="barcode" matInput />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      class="h50"
+      color="accent"
+      (click)="submit()"
+      [disabled]="manuallForm.invalid"
+    >
+      Далее
+      <mat-icon>library_add</mat-icon>
+    </button>
+  </form>
+  <h2 *ngIf="barcodeValue">{{ barcodeValue }}</h2>
   <button
     mat-raised-button
-    class="h50"
-    color="accent"
-    (click)="submit()"
-    [disabled]="manuallForm.invalid"
+    color="primary"
+    class="manual-key"
+    [disabled]="isLoading"
+    (click)="changeEnterOption()"
   >
-    Далее
-    <mat-icon>library_add</mat-icon>
+    {{ isManuallLogic ? "Сканировать" : "Ручной ввод" }}
+    <mat-icon> {{ isManuallLogic ? "speaker_phone" : "keyboard" }}</mat-icon>
   </button>
-</form>
-<h2 *ngIf="barcodeValue">{{ barcodeValue }}</h2>
-<button
-  mat-raised-button
-  color="primary"
-  class="manual-key"
-  [disabled]="isLoading"
-  (click)="changeEnterOption()"
->
-  {{ isManuallLogic ? "Сканировать" : "Ручной ввод" }}
-  <mat-icon> {{ isManuallLogic ? "speaker_phone" : "keyboard" }}</mat-icon>
-</button>
+</div>
+<app-footer-menu [revisionId]="revisionId"></app-footer-menu>

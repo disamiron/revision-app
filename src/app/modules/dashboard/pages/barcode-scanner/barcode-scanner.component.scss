@@ -1,28 +1,38 @@
 :host {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  min-height: 560px;
+  height: 88vh;
   align-items: center;
 }
-h1 {
-  text-align: center;
-}
-::ng-deep .scanner {
-  min-width: 300px;
-  max-width: 600px;
-  video {
-    max-height: 320px !important;
-  }
-}
-.manual-key {
-  position: absolute;
-  top: 66vh;
-  z-index: 2;
-}
-form {
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  mat-form-field {
+  height: 100%;
+  overflow-y: auto;
+  h1 {
+    text-align: center;
+  }
+  ::ng-deep .scanner {
     min-width: 300px;
+    max-width: 600px;
+    video {
+      max-height: 320px !important;
+    }
+  }
+  .manual-key {
+    position: absolute;
+    top: 66vh;
+    z-index: 2;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    mat-form-field {
+      min-width: 300px;
+    }
   }
 }

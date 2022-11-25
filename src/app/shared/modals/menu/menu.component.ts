@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { urlValues } from '../../constants';
 import { IShop } from '../../interfaces';
 
 @Component({
@@ -8,5 +9,6 @@ import { IShop } from '../../interfaces';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent {
+  readonly urlValues = urlValues;
   constructor(@Inject(MAT_DIALOG_DATA) public data: IShop) {}
 }

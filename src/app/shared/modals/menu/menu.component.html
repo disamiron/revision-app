@@ -1,9 +1,22 @@
 <div class="modal">
   <div class="modal__buttons">
-    <button class="button white" mat-stroked-button color="primary">
-      <mat-icon>search</mat-icon>
-      Поиск
-    </button>
+    <a
+      [routerLink]="
+        urlValues.dashboard +
+        '/' +
+        urlValues.revision +
+        '/' +
+        data.revisionId +
+        '/' +
+        urlValues.search
+      "
+      mat-dialog-close="cancel"
+    >
+      <button class="button white" mat-stroked-button color="primary">
+        <mat-icon>search</mat-icon>
+        Поиск
+      </button>
+    </a>
     <button class="button white" mat-stroked-button color="primary">
       <mat-icon> insert_drive_file</mat-icon>
       Загрузить

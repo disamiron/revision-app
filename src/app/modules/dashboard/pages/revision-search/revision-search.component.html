@@ -1,0 +1,13 @@
+<div class="content">
+  <h1>Поиск по ревизии</h1>
+  <form [formGroup]="searchFormGroup">
+    <mat-form-field>
+      <mat-label>Введите штрих-код или локальный код</mat-label>
+      <input matInput formControlName="searchValue" />
+    </mat-form-field>
+  </form>
+</div>
+<app-footer-menu
+  [revisionId]="revisionId"
+  [searchPage]="true"
+></app-footer-menu>
