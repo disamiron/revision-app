@@ -20,6 +20,8 @@ export class BarcodeScannerComponent implements AfterViewInit {
 
   public isManuallLogic: boolean = false;
 
+  public isLoading: boolean = true;
+
   public manuallForm: FormGroup = this._fb.group({
     barcode: [null, Validators.required],
   });
@@ -62,8 +64,12 @@ export class BarcodeScannerComponent implements AfterViewInit {
   }
 
   public changeEnterOption() {
+    if (this.isLoading) {
+      return;
+    }
     this.isManuallLogic = !this.isManuallLogic;
     if (!this.isManuallLogic) {
+      this.isLoading = true;
       this.barcodeScanner.start();
     } else {
       this.barcodeScanner.stop();
@@ -73,5 +79,6 @@ export class BarcodeScannerComponent implements AfterViewInit {
 
   public barcodeScanStarted() {
     this.started = true;
+    this.isLoading = false;
   }
 }
