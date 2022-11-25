@@ -3,6 +3,7 @@ export const urlValues = {
   dashboard: 'dashboard',
 
   revision: 'revision',
+  product: 'product',
 };
 
 export const appName = 'Revision App';

@@ -1,10 +1,20 @@
 <div class="footer-menu">
-  <button mat-mini-fab color="white">
-    <a [routerLink]="'/' + urlValues.dashboard"> <mat-icon>home</mat-icon></a>
-  </button>
-  <button mat-fab color="primary" class="big">
-    <mat-icon> speaker_phone</mat-icon>
-  </button>
+  <a [routerLink]="'/' + urlValues.dashboard">
+    <button mat-mini-fab color="white">
+      <mat-icon>home</mat-icon>
+    </button></a
+  >
+  <a>
+    <button
+      mat-fab
+      color="primary"
+      class="big"
+      *ngIf="productPage"
+      (click)="locationBack()"
+    >
+      <mat-icon> speaker_phone</mat-icon>
+    </button></a
+  >
   <button mat-mini-fab color="white" (click)="showMenu()">
     <mat-icon>menu</mat-icon>
   </button>

@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ShopCardComponent } from './components/shop-card/shop-card.component';
 import { MenuComponent } from './modals/menu/menu.component';
 import { BarcodeScannerLivestreamModule } from 'ngx-barcode-scanner';
+import { FooterMenuComponent } from './components/footer-menu/footer-menu.component';
 
 @NgModule({
   declarations: [ShopCardComponent, MenuComponent],

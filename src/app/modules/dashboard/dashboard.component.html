@@ -3,6 +3,7 @@
     <router-outlet></router-outlet>
   </div>
   <app-footer-menu
+    [productPage]="router.url.includes(urlValues.product)"
     *ngIf="router.url.includes(urlValues.revision)"
   ></app-footer-menu>
 </div>

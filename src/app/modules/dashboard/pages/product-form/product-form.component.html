@@ -1,0 +1,18 @@
+<h1>Введите количество продукта</h1>
+<form [formGroup]="productForm">
+  <mat-form-field appearance="fill" [color]="'white'">
+    <mat-label>Штрих-код</mat-label>
+    <input formControlName="barcode" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="fill" [color]="'white'">
+    <mat-label>Наименование продукта</mat-label>
+    <input formControlName="productName" matInput />
+  </mat-form-field>
+  <mat-form-field appearance="fill" [color]="'white'">
+    <mat-label>Количество</mat-label>
+    <input type="number" formControlName="quantity" matInput />
+  </mat-form-field>
+  <button mat-fab color="primary" [disabled]="productForm.invalid">
+    <mat-icon>library_add</mat-icon>
+  </button>
+</form>

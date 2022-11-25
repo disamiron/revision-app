@@ -1,11 +1,36 @@
-<h1>Отсканируйте товар</h1>
+<h1>
+  {{
+    isManuallLogic
+      ? "Введите штрих код или локальный код"
+      : "Отсканируйте товар"
+  }}
+</h1>
 <barcode-scanner-livestream
   type="ean"
   (valueChanges)="onValueChanges($event)"
   (started)="barcodeScanStarted()"
 ></barcode-scanner-livestream>
+<form [formGroup]="manuallForm" *ngIf="isManuallLogic">
+  <mat-form-field appearance="fill" [color]="'white'">
+    <mat-label>Штрих-код или локальный код</mat-label>
+    <input type="number" formControlName="barcode" matInput />
+  </mat-form-field>
+  <button
+    mat-fab
+    color="primary"
+    (click)="submit()"
+    [disabled]="manuallForm.invalid"
+  >
+    <mat-icon>library_add</mat-icon>
+  </button>
+</form>
 <h2 *ngIf="barcodeValue">{{ barcodeValue }}</h2>
-<button mat-raised-button color="primary" class="manual-key">
-  Ручной ввод
-  <mat-icon>keyboard</mat-icon>
+<button
+  mat-raised-button
+  color="primary"
+  class="manual-key"
+  (click)="changeEnterOption()"
+>
+  {{ isManuallLogic ? "Сканировать" : "Ручной ввод" }}
+  <mat-icon> {{ isManuallLogic ? "speaker_phone" : "keyboard" }}</mat-icon>
 </button>
