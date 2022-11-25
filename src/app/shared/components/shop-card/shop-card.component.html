@@ -5,11 +5,9 @@
   (click)="shop.isThereRevision ? navigateToRevision() : showMenu()"
 >
   <mat-card-header>
-    <mat-card-title
-      >{{ shop.name }}
-      <div class="indicator" [class.green]="shop.isThereRevision"></div
-    ></mat-card-title>
+    <mat-card-title>{{ shop.name }} </mat-card-title>
 
     <mat-card-subtitle>{{ shop.address }}</mat-card-subtitle>
   </mat-card-header>
+  <div class="indicator" [class.green]="shop.isThereRevision"></div>
 </mat-card>

@@ -8,21 +8,23 @@
   background-color: #ebebeb;
   mat-card-header {
     margin-right: 25px;
-  }
-  mat-card-title {
-    display: flex;
-    align-items: center;
-    .indicator {
-      margin-left: 5px;
-      width: 10px;
-      height: 10px;
-      background-color: #8b6868;
-      border-radius: 50%;
-    }
-    .green {
-      animation: blink 2s linear infinite;
+    mat-card-title {
+      display: flex;
+      align-items: center;
     }
   }
+}
+.indicator {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  background-color: #8b6868;
+  border-radius: 50%;
+}
+.green {
+  animation: blink 2s linear infinite;
 }
 .pointer {
   cursor: pointer;
