@@ -5,7 +5,7 @@
 .modal {
   box-sizing: border-box;
   max-width: 600px;
-  min-width: 250px;
+  min-width: 270px;
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -19,15 +19,18 @@
     gap: 20px;
     margin: 30px 0 20px;
     box-sizing: border-box;
-    min-width: 90%;
+    min-width: 95%;
     .button {
       height: 60px;
       width: 100%;
       max-width: 400px;
       border-radius: 10px;
       ::ng-deep .mat-button-wrapper {
-        margin-right: 20px;
+        margin-right: 10px;
       }
     }
   }
+}
+.white {
+  background: #fff;
 }
