@@ -16,11 +16,13 @@
     <input type="number" formControlName="barcode" matInput />
   </mat-form-field>
   <button
-    mat-fab
+    mat-raised-button
+    class="h50"
     color="accent"
     (click)="submit()"
     [disabled]="manuallForm.invalid"
   >
+    Далее
     <mat-icon>library_add</mat-icon>
   </button>
 </form>

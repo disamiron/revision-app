@@ -13,11 +13,13 @@
     <input type="number" formControlName="quantity" matInput />
   </mat-form-field>
   <button
-    mat-fab
+    mat-raised-button
+    class="h50"
     color="accent"
     [disabled]="productForm.invalid"
     (click)="sumbit()"
   >
+    Готово
     <mat-icon>library_add</mat-icon>
   </button>
 </form>

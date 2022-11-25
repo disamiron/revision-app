@@ -13,3 +13,17 @@ mat-dialog-container {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
 }
+
+.h50 {
+  height: 50px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
