@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
+import { urlValues } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-product-form',
@@ -22,15 +24,26 @@ export class ProductFormComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _snackBar: MatSnackBar,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
     this.productForm.patchValue({
       barcode: this.productId,
-      productName: 'Coca-cola 5л. в банке',
+      productName: 'Coca-cola 1л.',
     });
     this.productForm.controls.barcode.disable();
     this.productForm.controls.productName.disable();
+  }
+
+  public sumbit() {
+    this._snackBar.open('Товар добавлен. Изменения сохранены.', 'Закрыть', {
+      duration: 3000,
+    });
+    this._router.navigateByUrl(
+      urlValues.dashboard + '/' + urlValues.revision + '/' + this.revisionId
+    );
   }
 }

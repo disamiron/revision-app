@@ -12,7 +12,12 @@
     <mat-label>Количество</mat-label>
     <input type="number" formControlName="quantity" matInput />
   </mat-form-field>
-  <button mat-fab color="accent" [disabled]="productForm.invalid">
+  <button
+    mat-fab
+    color="accent"
+    [disabled]="productForm.invalid"
+    (click)="sumbit()"
+  >
     <mat-icon>library_add</mat-icon>
   </button>
 </form>

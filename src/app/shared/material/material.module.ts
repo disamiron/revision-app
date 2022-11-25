@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatAutocompleteModule,
     MatCardModule,
+    MatSnackBarModule,
   ],
   exports: [
     MatButtonModule,
@@ -26,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatAutocompleteModule,
     MatCardModule,
+    MatSnackBarModule,
   ],
   providers: [],
 })
