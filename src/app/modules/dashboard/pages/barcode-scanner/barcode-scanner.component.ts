@@ -25,14 +25,8 @@ export class BarcodeScannerComponent implements AfterViewInit {
   public config: QuaggaJSConfigObject = {
     decoder: {
       readers: ['ean_reader'],
+      multiple: true,
     },
-    inputStream: {
-      type: 'LiveStream',
-    },
-    debug: true,
-    frequency: 5,
-    numOfWorkers: 2,
-    locate: true,
   };
 
   public manuallForm: FormGroup = this._fb.group({
@@ -53,10 +47,12 @@ export class BarcodeScannerComponent implements AfterViewInit {
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
-    this.manuallForm.patchValue({
-      barcode: result.codeResult.code,
-    });
-    this.submit();
+    if (result.codeResult.format === 'ean_13') {
+      this.manuallForm.patchValue({
+        barcode: result.codeResult.code,
+      });
+      this.submit();
+    }
   }
 
   public submit() {
