@@ -14,10 +14,6 @@ export class BarcodeScannerComponent implements AfterViewInit {
   @ViewChild(BarcodeScannerLivestreamComponent)
   public barcodeScanner!: BarcodeScannerLivestreamComponent;
 
-  public barcodeValue: string | null = null;
-
-  public started = false;
-
   public isManuallLogic: boolean = false;
 
   public isLoading: boolean = true;
@@ -25,8 +21,18 @@ export class BarcodeScannerComponent implements AfterViewInit {
   public config: QuaggaJSConfigObject = {
     decoder: {
       readers: ['ean_reader'],
+      debug: {
+        drawBoundingBox: true,
+        showFrequency: true,
+        drawScanline: true,
+        showPattern: true,
+      },
     },
-    frequency: 5,
+    frequency: 10,
+    locator: {
+      halfSample: true,
+      patchSize: 'medium',
+    },
   };
 
   public manuallForm: FormGroup = this._fb.group({
@@ -47,15 +53,12 @@ export class BarcodeScannerComponent implements AfterViewInit {
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
-    if (
-      result.codeResult.format === 'ean_13' &&
-      result?.codeResult?.code &&
-      result.codeResult?.code[0] === '4'
-    ) {
+    if (result.codeResult.format === 'ean_13' && result?.codeResult?.code) {
+      this.barcodeScanner.stop();
+      this.isManuallLogic = true;
       this.manuallForm.patchValue({
         barcode: result.codeResult.code,
       });
-      this.submit();
     }
   }
 
@@ -80,18 +83,21 @@ export class BarcodeScannerComponent implements AfterViewInit {
     if (this.isLoading) {
       return;
     }
+
     this.isManuallLogic = !this.isManuallLogic;
+
     if (!this.isManuallLogic) {
+      this.manuallForm.patchValue({
+        barcode: null,
+      });
       this.isLoading = true;
       this.barcodeScanner.start();
     } else {
       this.barcodeScanner.stop();
-      this.started = false;
     }
   }
 
   public barcodeScanStarted() {
-    this.started = true;
     this.isLoading = false;
   }
 }
