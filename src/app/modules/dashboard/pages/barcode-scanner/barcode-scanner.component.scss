@@ -15,13 +15,13 @@
   h1 {
     text-align: center;
   }
-  ::ng-deep .scanner {
-    min-width: 300px;
-    max-width: 600px;
-    video {
-      max-height: 320px !important;
-    }
-  }
+  // ::ng-deep .scanner {
+  //   min-width: 300px;
+  //   max-width: 600px;
+  //   video {
+  //     max-height: 320px !important;
+  //   }
+  // }
   .manual-key {
     position: absolute;
     top: 66vh;

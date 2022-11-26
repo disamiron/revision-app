@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { QuaggaJSResultObject } from '@ericblade/quagga2';
+import { QuaggaJSConfigObject, QuaggaJSResultObject } from '@ericblade/quagga2';
 import { BarcodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 import { urlValues } from 'src/app/shared/constants';
 
@@ -22,6 +22,19 @@ export class BarcodeScannerComponent implements AfterViewInit {
 
   public isLoading: boolean = true;
 
+  public config: QuaggaJSConfigObject = {
+    decoder: {
+      readers: ['ean_reader'],
+    },
+    inputStream: {
+      type: 'LiveStream',
+    },
+    debug: true,
+    frequency: 5,
+    numOfWorkers: 2,
+    locate: true,
+  };
+
   public manuallForm: FormGroup = this._fb.group({
     barcode: [null, Validators.required],
   });
@@ -36,29 +49,7 @@ export class BarcodeScannerComponent implements AfterViewInit {
   ) {}
 
   public ngAfterViewInit() {
-    this.barcodeScannerStart();
-  }
-
-  public barcodeScannerStart() {
     this.barcodeScanner.start();
-    this.barcodeScanner.config = {
-      decoder: {
-        readers: [
-          {
-            format: 'ean_reader',
-            config: {
-              supplements: ['ean_5_reader', 'ean_2_reader', 'ean_13_reader'],
-            },
-          },
-        ],
-      },
-      frequency: 5,
-      numOfWorkers: 2,
-      locate: true,
-      locator: {
-        patchSize: 'medium',
-      },
-    };
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
@@ -92,7 +83,7 @@ export class BarcodeScannerComponent implements AfterViewInit {
     this.isManuallLogic = !this.isManuallLogic;
     if (!this.isManuallLogic) {
       this.isLoading = true;
-      this.barcodeScannerStart();
+      this.barcodeScanner.start();
     } else {
       this.barcodeScanner.stop();
       this.started = false;

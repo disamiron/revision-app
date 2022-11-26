@@ -7,7 +7,7 @@
     }}
   </h1>
   <barcode-scanner-livestream
-    type="ean"
+    [config]="config"
     (valueChanges)="onValueChanges($event)"
     (started)="barcodeScanStarted()"
   ></barcode-scanner-livestream>
