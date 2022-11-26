@@ -8,10 +8,12 @@ const routes: Routes = [
   {
     path: urlValues.auth,
     component: AuthComponent,
+    // canActivate: [AuthGuard],
   },
   {
     path: urlValues.dashboard,
     component: DashboardComponent,
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

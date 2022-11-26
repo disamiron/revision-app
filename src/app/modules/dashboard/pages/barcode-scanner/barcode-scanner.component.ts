@@ -36,7 +36,29 @@ export class BarcodeScannerComponent implements AfterViewInit {
   ) {}
 
   public ngAfterViewInit() {
+    this.barcodeScannerStart();
+  }
+
+  public barcodeScannerStart() {
     this.barcodeScanner.start();
+    this.barcodeScanner.config = {
+      decoder: {
+        readers: [
+          {
+            format: 'ean_reader',
+            config: {
+              supplements: ['ean_5_reader', 'ean_2_reader', 'ean_13_reader'],
+            },
+          },
+        ],
+      },
+      frequency: 5,
+      numOfWorkers: 2,
+      locate: true,
+      locator: {
+        patchSize: 'medium',
+      },
+    };
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
@@ -70,7 +92,7 @@ export class BarcodeScannerComponent implements AfterViewInit {
     this.isManuallLogic = !this.isManuallLogic;
     if (!this.isManuallLogic) {
       this.isLoading = true;
-      this.barcodeScanner.start();
+      this.barcodeScannerStart();
     } else {
       this.barcodeScanner.stop();
       this.started = false;
