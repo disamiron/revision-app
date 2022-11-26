@@ -19,16 +19,11 @@ export class BarcodeScannerComponent implements AfterViewInit {
   public isLoading: boolean = true;
 
   public config: QuaggaJSConfigObject = {
+    frequency: 5,
+    numOfWorkers: 4,
     decoder: {
       readers: ['ean_reader'],
-      debug: {
-        drawBoundingBox: true,
-        showFrequency: true,
-        drawScanline: true,
-        showPattern: true,
-      },
     },
-    frequency: 10,
     locator: {
       halfSample: true,
       patchSize: 'medium',
@@ -53,7 +48,11 @@ export class BarcodeScannerComponent implements AfterViewInit {
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
-    if (result.codeResult.format === 'ean_13' && result?.codeResult?.code) {
+    if (
+      result.codeResult.format === 'ean_13' &&
+      result?.codeResult?.code &&
+      result?.codeResult?.code[0] === '4'
+    ) {
       this.barcodeScanner.stop();
       this.isManuallLogic = true;
       this.manuallForm.patchValue({
