@@ -25,8 +25,8 @@ export class BarcodeScannerComponent implements AfterViewInit {
   public config: QuaggaJSConfigObject = {
     decoder: {
       readers: ['ean_reader'],
-      multiple: true,
     },
+    frequency: 5,
   };
 
   public manuallForm: FormGroup = this._fb.group({
@@ -47,7 +47,11 @@ export class BarcodeScannerComponent implements AfterViewInit {
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
-    if (result.codeResult.format === 'ean_13') {
+    if (
+      result.codeResult.format === 'ean_13' &&
+      result?.codeResult?.code &&
+      result.codeResult?.code[0] === '4'
+    ) {
       this.manuallForm.patchValue({
         barcode: result.codeResult.code,
       });
