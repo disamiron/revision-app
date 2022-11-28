@@ -41,14 +41,17 @@
         >От 1 до 4.</mat-error
       >
     </mat-form-field>
-    <mat-radio-group aria-label="Select an option" formControlName="readers">
-      <mat-radio-button color="primary" value="ean_reader"
-        >Ean 13</mat-radio-button
-      >
-      <mat-radio-button color="primary" value="ean_8_reader"
-        >Ean 8</mat-radio-button
-      >
-    </mat-radio-group>
+    <div class="checkbox">
+      <mat-radio-group aria-label="Select an option" formControlName="readers">
+        <mat-radio-button color="primary" value="ean_reader"
+          >Ean 13</mat-radio-button
+        >
+        <mat-radio-button color="primary" value="ean_8_reader"
+          >Ean 8</mat-radio-button
+        >
+      </mat-radio-group>
+      <p>Формат штрих-кода</p>
+    </div>
     <div class="checkbox">
       <mat-checkbox formControlName="locate" color="primary">
         Локатор
