@@ -27,7 +27,7 @@ export class BarcodeScannerComponent implements AfterViewInit {
 
   public config: QuaggaJSConfigObject = {
     frequency: 10,
-    locate: false,
+    locate: true,
     numOfWorkers: 2,
     inputStream: {
       constraints: {
