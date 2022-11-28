@@ -21,6 +21,7 @@ export class BarcodeOptionComponent implements OnInit {
     ],
     locate: [false],
     halfSample: [false],
+    readers: [null],
   });
 
   public patchSizes = ['x-small', 'small', 'medium', 'large', 'x-large'];
@@ -32,14 +33,13 @@ export class BarcodeOptionComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    console.log(this.data.locator?.patchSize);
-
     this.barcodeOptionForm.patchValue({
       patchSize: this.data.locator?.patchSize,
       frequency: this.data.frequency,
       numOfWorkers: this.data.numOfWorkers,
       locate: this.data.locate,
       halfSample: this.data.locator?.halfSample,
+      readers: this.data.decoder!.readers![0],
     });
   }
 

@@ -26,8 +26,8 @@ export class BarcodeScannerComponent implements AfterViewInit {
   public isLoading: boolean = true;
 
   public config: QuaggaJSConfigObject = {
-    frequency: 5,
-    locate: true,
+    frequency: 10,
+    locate: false,
     numOfWorkers: 2,
     inputStream: {
       constraints: {
@@ -44,10 +44,12 @@ export class BarcodeScannerComponent implements AfterViewInit {
       readers: ['ean_reader'],
     },
     locator: {
-      halfSample: true,
+      halfSample: false,
       patchSize: 'medium',
     },
   };
+
+  public checkFormat: 'ean_13' | 'ean_8' = 'ean_13';
 
   public manuallForm: FormGroup = this._fb.group({
     barcode: [null, Validators.required],
@@ -68,6 +70,7 @@ export class BarcodeScannerComponent implements AfterViewInit {
     let scanOption = this._storageService.getItem<QuaggaLocalConfig>(
       StorageType.ScanOptions
     );
+
     if (scanOption) {
       this.updateConfig(scanOption);
     }
@@ -76,7 +79,10 @@ export class BarcodeScannerComponent implements AfterViewInit {
   }
 
   public onValueChanges(result: QuaggaJSResultObject) {
-    if (result.codeResult.format === 'ean_13' && result?.codeResult?.code) {
+    if (
+      result.codeResult.format === this.checkFormat &&
+      result?.codeResult?.code
+    ) {
       this.barcodeScanner.stop();
       this.isManuallLogic = true;
       this.manuallForm.patchValue({
@@ -121,6 +127,10 @@ export class BarcodeScannerComponent implements AfterViewInit {
   }
 
   public setting() {
+    if (this.isLoading) {
+      return;
+    }
+
     this.barcodeScanner.stop();
     this._dialog
       .open(BarcodeOptionComponent, {
@@ -145,6 +155,9 @@ export class BarcodeScannerComponent implements AfterViewInit {
     this.config.numOfWorkers = config.numOfWorkers;
     this.config.locate = config.locate;
     this.config.locator!.halfSample = config.halfSample;
+    this.config.decoder!.readers = [config.readers];
+    this.checkFormat =
+      this.config!.decoder?.readers![0] === 'ean_8_reader' ? 'ean_8' : 'ean_13';
   }
 
   public barcodeScanStarted(started: boolean) {

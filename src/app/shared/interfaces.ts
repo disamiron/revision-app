@@ -23,4 +23,5 @@ export interface QuaggaLocalConfig {
   numOfWorkers: number;
   locate: boolean;
   halfSample: boolean;
+  readers: 'ean_reader' | 'ean_8_reader';
 }

@@ -12,7 +12,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Частота</mat-label>
       <input type="number" formControlName="frequency" matInput />
-      <mat-hint>От 1 до 20. Рекомендуется 5</mat-hint>
+      <mat-hint>От 1 до 20. Рекомендуется 10</mat-hint>
       <mat-error
         *ngIf="barcodeOptionForm.controls.frequency.hasError('required')"
         >Это обязательное поле</mat-error
@@ -41,15 +41,30 @@
         >От 1 до 4.</mat-error
       >
     </mat-form-field>
-    <mat-checkbox formControlName="locate" color="primary">
-      Локатор
-    </mat-checkbox>
-    <mat-checkbox formControlName="halfSample" color="primary">
-      Половина образца
-    </mat-checkbox>
+    <mat-radio-group aria-label="Select an option" formControlName="readers">
+      <mat-radio-button color="primary" value="ean_reader"
+        >Ean 13</mat-radio-button
+      >
+      <mat-radio-button color="primary" value="ean_8_reader"
+        >Ean 8</mat-radio-button
+      >
+    </mat-radio-group>
+    <div class="checkbox">
+      <mat-checkbox formControlName="locate" color="primary">
+        Локатор
+      </mat-checkbox>
+      <p>Расходует производительность</p>
+    </div>
+    <div class="checkbox">
+      <mat-checkbox formControlName="halfSample" color="primary">
+        Половина образца
+      </mat-checkbox>
+      <p>Расходует производительность</p>
+    </div>
+
     <button
       mat-raised-button
-      class="manual-key"
+      color="accent"
       [disabled]="barcodeOptionForm.invalid"
       (click)="sumbit()"
     >

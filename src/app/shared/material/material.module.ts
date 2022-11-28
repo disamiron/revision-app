@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSnackBarModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatRadioModule,
   ],
   exports: [
     MatButtonModule,
@@ -35,6 +37,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSnackBarModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatRadioModule,
   ],
   providers: [],
 })
