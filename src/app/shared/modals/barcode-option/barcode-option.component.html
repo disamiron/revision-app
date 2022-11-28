@@ -1,0 +1,59 @@
+<div class="modal">
+  <form [formGroup]="barcodeOptionForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Размер штрих-кода</mat-label>
+      <mat-select formControlName="patchSizes">
+        <mat-option *ngFor="let opt of patchSizes" [value]="opt">{{
+          opt
+        }}</mat-option>
+      </mat-select>
+      <mat-hint>Рекомендуется medium</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Частота</mat-label>
+      <input type="number" formControlName="frequency" matInput />
+      <mat-hint>От 1 до 20. Рекомендуется 5</mat-hint>
+      <mat-error
+        *ngIf="barcodeOptionForm.controls.frequency.hasError('required')"
+        >Это обязательное поле</mat-error
+      >
+      <mat-error
+        *ngIf="
+          barcodeOptionForm.controls.frequency.hasError('min') ||
+          barcodeOptionForm.controls.frequency.hasError('max')
+        "
+        >От 1 до 20.</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Количество обработчиков</mat-label>
+      <input type="number" formControlName="numOfWorkers" matInput />
+      <mat-hint>От 1 до 4. Рекомендуется 2</mat-hint>
+      <mat-error
+        *ngIf="barcodeOptionForm.controls.numOfWorkers.hasError('required')"
+        >Это обязательное поле</mat-error
+      >
+      <mat-error
+        *ngIf="
+          barcodeOptionForm.controls.numOfWorkers.hasError('min') ||
+          barcodeOptionForm.controls.numOfWorkers.hasError('max')
+        "
+        >От 1 до 4.</mat-error
+      >
+    </mat-form-field>
+    <mat-checkbox formControlName="locate" color="primary">
+      Локатор
+    </mat-checkbox>
+    <mat-checkbox formControlName="halfSample" color="primary">
+      Половина образца
+    </mat-checkbox>
+    <button
+      mat-raised-button
+      class="manual-key"
+      [disabled]="barcodeOptionForm.invalid"
+      (click)="sumbit()"
+    >
+      Готово
+    </button>
+  </form>
+</div>

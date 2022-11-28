@@ -6,11 +6,17 @@
         : "Отсканируйте товар"
     }}
   </h1>
+  <div class="aim" *ngIf="!isManuallLogic">
+    <div class="aim__border"></div>
+  </div>
   <barcode-scanner-livestream
     [config]="config"
+    [maxHeight]="'340px'"
     (valueChanges)="onValueChanges($event)"
-    (started)="barcodeScanStarted()"
-  ></barcode-scanner-livestream>
+    (started)="barcodeScanStarted($event)"
+  >
+  </barcode-scanner-livestream>
+
   <form [formGroup]="manuallForm" *ngIf="isManuallLogic">
     <mat-form-field appearance="fill" [color]="'white'">
       <mat-label>Штрих-код или локальный код</mat-label>
@@ -27,16 +33,27 @@
       <mat-icon>library_add</mat-icon>
     </button>
   </form>
-
-  <button
-    mat-raised-button
-    color="primary"
-    class="manual-key"
-    [disabled]="isLoading"
-    (click)="changeEnterOption()"
-  >
-    {{ isManuallLogic ? "Сканировать" : "Ручной ввод" }}
-    <mat-icon> {{ isManuallLogic ? "speaker_phone" : "keyboard" }}</mat-icon>
-  </button>
+  <div class="option-keys">
+    <button
+      mat-raised-button
+      color="primary"
+      class="manual-key"
+      [disabled]="isLoading && !isManuallLogic"
+      (click)="changeEnterOption()"
+    >
+      {{ isManuallLogic ? "Сканировать" : "Ручной ввод" }}
+      <mat-icon> {{ isManuallLogic ? "speaker_phone" : "keyboard" }}</mat-icon>
+    </button>
+    <button
+      mat-raised-button
+      class="manual-key"
+      *ngIf="!isManuallLogic"
+      [disabled]="isLoading && !isManuallLogic"
+      (click)="setting()"
+    >
+      Опции
+      <mat-icon>settings</mat-icon>
+    </button>
+  </div>
 </div>
 <app-footer-menu [revisionId]="revisionId"></app-footer-menu>

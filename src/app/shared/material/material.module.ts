@@ -8,6 +8,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   imports: [
@@ -19,6 +21,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatAutocompleteModule,
     MatCardModule,
     MatSnackBarModule,
+    MatSelectModule,
+    MatCheckboxModule,
   ],
   exports: [
     MatButtonModule,
@@ -29,6 +33,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatAutocompleteModule,
     MatCardModule,
     MatSnackBarModule,
+    MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [],
 })
