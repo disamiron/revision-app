@@ -2,7 +2,7 @@
   <form [formGroup]="barcodeOptionForm">
     <mat-form-field appearance="fill">
       <mat-label>Размер штрих-кода</mat-label>
-      <mat-select formControlName="patchSizes">
+      <mat-select formControlName="patchSize">
         <mat-option *ngFor="let opt of patchSizes" [value]="opt">{{
           opt
         }}</mat-option>

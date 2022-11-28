@@ -6,4 +6,5 @@ export interface Storage {
 export enum StorageType {
   Token = 'REVISION_APP_TOKEN',
   User = 'REVISION_APP_USER',
+  ScanOptions = 'REVISION_APP_SCAN_OPTIONS',
 }

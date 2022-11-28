@@ -10,7 +10,7 @@ import { QuaggaJSConfigObject } from '@ericblade/quagga2';
 })
 export class BarcodeOptionComponent implements OnInit {
   public barcodeOptionForm: FormGroup = this._fb.group({
-    patchSizes: [null],
+    patchSize: [null],
     frequency: [
       null,
       [Validators.required, Validators.min(1), Validators.max(20)],
@@ -32,8 +32,10 @@ export class BarcodeOptionComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    console.log(this.data.locator?.patchSize);
+
     this.barcodeOptionForm.patchValue({
-      patchSizes: this.data.locator?.patchSize,
+      patchSize: this.data.locator?.patchSize,
       frequency: this.data.frequency,
       numOfWorkers: this.data.numOfWorkers,
       locate: this.data.locate,

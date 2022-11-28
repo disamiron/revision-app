@@ -7,6 +7,9 @@ import { BarcodeScannerLivestreamComponent } from 'ngx-barcode-scanner';
 import { urlValues } from 'src/app/shared/constants';
 import { BarcodeOptionComponent } from 'src/app/shared/modals/barcode-option/barcode-option.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { StorageType } from 'src/app/shared/services/storage.type';
+import { QuaggaLocalConfig } from 'src/app/shared/interfaces';
 
 @UntilDestroy()
 @Component({
@@ -57,10 +60,18 @@ export class BarcodeScannerComponent implements AfterViewInit {
     private _fb: FormBuilder,
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private _storageService: StorageService
   ) {}
 
   public ngAfterViewInit() {
+    let scanOption = this._storageService.getItem<QuaggaLocalConfig>(
+      StorageType.ScanOptions
+    );
+    if (scanOption) {
+      this.updateConfig(scanOption);
+    }
+
     this.barcodeScanner.start();
   }
 
@@ -119,24 +130,21 @@ export class BarcodeScannerComponent implements AfterViewInit {
       })
       .afterClosed()
       .pipe(untilDestroyed(this))
-      .subscribe(
-        (v: {
-          patchSize: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
-          frequency: number;
-          numOfWorkers: number;
-          locate: boolean;
-          halfSample: boolean;
-        }) => {
-          if (v) {
-            this.config.locator!.patchSize = v.patchSize!;
-            this.config.frequency = v.frequency;
-            this.config.numOfWorkers = v.numOfWorkers;
-            this.config.locate = v.locate;
-            this.config.locator!.halfSample = v.halfSample;
-          }
-          this.barcodeScanner.start();
+      .subscribe((v: QuaggaLocalConfig) => {
+        if (v) {
+          this._storageService.setItem(StorageType.ScanOptions, v);
+          this.updateConfig(v);
         }
-      );
+        this.barcodeScanner.start();
+      });
+  }
+
+  public updateConfig(config: QuaggaLocalConfig) {
+    this.config.locator!.patchSize = config.patchSize!;
+    this.config.frequency = config.frequency;
+    this.config.numOfWorkers = config.numOfWorkers;
+    this.config.locate = config.locate;
+    this.config.locator!.halfSample = config.halfSample;
   }
 
   public barcodeScanStarted(started: boolean) {

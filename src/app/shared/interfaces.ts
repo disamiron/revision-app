@@ -16,3 +16,11 @@ export interface Token {
   scope: Scope;
   token_type: string;
 }
+
+export interface QuaggaLocalConfig {
+  patchSize: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
+  frequency: number;
+  numOfWorkers: number;
+  locate: boolean;
+  halfSample: boolean;
+}
